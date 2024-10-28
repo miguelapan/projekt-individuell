@@ -1,0 +1,28 @@
+.search-form {
+    background-color: $color-secondary;
+    color: $color-primary;
+    border-radius: $border-radius-m;
+    margin: 0 $spacing-m 0 $spacing-m;
+  
+    div {
+      display: flex;
+      flex-wrap: wrap;
+  
+      label {
+        color: $color-primary;
+        font-weight: 700;
+      }
+  
+      > * {
+        flex: 1 1 100%;
+      }
+    }
+  
+    @media screen and (min-width: 768px) {
+      display: grid;
+      place-self: center;
+      padding: $spacing-m;
+      gap: var(--spacing-xs);
+    }
+  }
+  

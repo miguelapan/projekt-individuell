@@ -1,0 +1,33 @@
+.home-list {
+    display: grid;
+    padding: $spacing-l;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    grid-auto-rows: 20rem;
+    gap: $spacing-l;
+    width: 100%;
+  
+    .home-container {
+      cursor: pointer;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      position: relative;
+      gap: $spacing-l;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+  
+      p {
+        font-size: 12px;
+        font-weight: 200;
+      }
+    }
+  
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(3, minmax(200px, 1fr));
+    }
+  }
+  

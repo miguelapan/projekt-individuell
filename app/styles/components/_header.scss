@@ -1,0 +1,35 @@
+header {
+    padding: $spacing-m;
+    
+    button {
+      display: none;
+      color: $color-details;
+    }
+  
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 1px;
+      background-color: $color-details;
+    }
+  
+    @media screen and (min-width: 768px) {
+      button {
+        display: block;
+      }
+  
+      ul {
+        display: flex;
+        list-style: none;
+  
+        li {
+          margin-left: var(--spacing-l);
+        }
+      }
+    }
+  }
+  

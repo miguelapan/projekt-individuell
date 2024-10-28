@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "./styles/styles.css"
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import { AuthProvider } from "./context/contextProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -10,6 +13,11 @@ const geistSans = localFont({
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
+  weight: "100 900",
+});
+const inter = localFont({
+  src: "./fonts/Inter-Italic-VariableFont_opsz,wght.ttf",
+  variable: "--font-inter",
   weight: "100 900",
 });
 
@@ -25,8 +33,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`grid-template ${geistSans.variable} ${geistMono.variable} ${inter.variable}`}>
+        <AuthProvider>
+        <Header />
+        <main>
         {children}
+        </main>
+        <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

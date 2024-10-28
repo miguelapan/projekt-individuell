@@ -1,0 +1,13 @@
+.search-button {
+    background-color: $color-details;
+    color: $color-secondary;
+    padding: $spacing-s;
+    @include border-radius(10px);
+    cursor: pointer;
+  }
+  .book-button{
+    background-color: $color-details;
+    color: $color-secondary;
+    @include border-radius(10px);
+    cursor: pointer;
+  }

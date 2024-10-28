@@ -1,0 +1,23 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $spacing-m;
+  
+    div {
+      display: flex;
+      gap: $spacing-s;
+    }
+  
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;  
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 1px;
+      background-color: $color-details;
+    }
+  }
+  

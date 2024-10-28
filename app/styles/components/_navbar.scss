@@ -1,0 +1,13 @@
+.navbar-mobile {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  
+    ul {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      padding: $spacing-m;
+    }
+  }
+  

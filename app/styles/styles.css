@@ -1,0 +1,333 @@
+:root {
+  --font-inter: "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-inter);
+  background-color: var(--color-secondary);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+.grid-template {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: fit-content(100px) 1fr auto;
+  background-color: #463844;
+}
+
+header {
+  display: flex;
+  position: relative;
+}
+
+footer {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .grid-template {
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: fit-content(100px) 1fr auto auto;
+    max-height: 100vh;
+  }
+  header {
+    justify-content: space-between;
+    grid-column: 1/-1;
+  }
+  main {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    min-height: 0;
+    overflow-y: scroll;
+    z-index: 10;
+  }
+  .search-form {
+    grid-column: 1/3;
+  }
+  .image-main {
+    grid-column: 3/-1;
+  }
+  footer {
+    grid-column: 1/-1;
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+    z-index: 100;
+  }
+}
+header {
+  padding: 20px;
+}
+header button {
+  display: none;
+  color: #2CAF35;
+}
+header::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 1px;
+  background-color: #2CAF35;
+}
+@media screen and (min-width: 768px) {
+  header button {
+    display: block;
+  }
+  header ul {
+    display: flex;
+    list-style: none;
+  }
+  header ul li {
+    margin-left: var(--spacing-l);
+  }
+}
+
+main {
+  position: relative;
+  width: 100vw;
+}
+main .image-main {
+  display: grid;
+  align-self: center;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  padding: 5px;
+}
+
+.detail-page {
+  grid-column: 1/-1;
+  color: white;
+}
+.detail-page .detail-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+  padding: 30px;
+}
+.detail-page .detail-container .detail-title {
+  grid-column: 1/-1;
+  height: -moz-max-content;
+  height: max-content;
+}
+.detail-page .detail-container .detail-card-image {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.detail-page .detail-container .detail-card-image .detail-image {
+  grid-column: 1/5;
+  width: 100%;
+  max-height: 50vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+}
+.detail-page .detail-container .detail-card-image .detail-temporary {
+  grid-column: 5/-1;
+  display: grid;
+  justify-content: center;
+  margin-top: 30px;
+  display: grid;
+  min-width: 20rem;
+  justify-self: center;
+  background-color: #777272;
+  padding: 30px;
+  margin: 10px;
+}
+.detail-page .detail-container .detail-card-description {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1/-1;
+  margin-bottom: 30px;
+}
+.detail-page .detail-container .detail-card-description > * {
+  flex: 1 1 100%;
+}
+.detail-page .detail-container .detail-equipment-second-header {
+  margin-bottom: 30px;
+  grid-column: 1/-1;
+}
+.detail-page .detail-container .detail-equipment-div {
+  grid-column: 1/-1;
+}
+.detail-page .detail-container .detail-equipment-div ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 30px;
+  gap: 10px;
+  background-color: #777272;
+  border-radius: 15px;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+}
+footer div {
+  display: flex;
+  gap: 10px;
+}
+footer::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 1px;
+  background-color: #2CAF35;
+}
+
+.login-modal {
+  display: grid;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  place-items: center;
+  z-index: 100;
+}
+.login-modal .login-form {
+  display: grid;
+  place-items: center;
+  background-color: #ffffff;
+  color: #463844;
+  padding: 20px;
+  min-width: 50%;
+  height: 70%;
+}
+.login-modal .login-form div {
+  position: relative;
+  padding: 10px;
+}
+.login-modal .login-form div::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #2CAF35;
+}
+
+.search-button {
+  background-color: #2CAF35;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.book-button {
+  background-color: #2CAF35;
+  color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.input-search {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+.input-search .input-search input {
+  border: none;
+  outline: none;
+}
+
+.navbar-mobile {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.navbar-mobile ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 20px;
+}
+
+.search-form {
+  background-color: #ffffff;
+  color: #463844;
+  border-radius: 10px;
+  margin: 0 20px 0 20px;
+}
+.search-form div {
+  display: flex;
+  flex-wrap: wrap;
+}
+.search-form div label {
+  color: #463844;
+  font-weight: 700;
+}
+.search-form div > * {
+  flex: 1 1 100%;
+}
+@media screen and (min-width: 768px) {
+  .search-form {
+    display: grid;
+    place-self: center;
+    padding: 20px;
+    gap: var(--spacing-xs);
+  }
+}
+
+.home-list {
+  display: grid;
+  padding: 30px;
+  grid-column: 1/-1;
+  justify-content: space-between;
+  grid-auto-rows: 20rem;
+  gap: 30px;
+  width: 100%;
+}
+.home-list .home-container {
+  cursor: pointer;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  position: relative;
+  gap: 30px;
+}
+.home-list .home-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home-list .home-container p {
+  font-size: 12px;
+  font-weight: 200;
+}
+@media screen and (min-width: 768px) {
+  .home-list {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+}/*# sourceMappingURL=styles.css.map */
