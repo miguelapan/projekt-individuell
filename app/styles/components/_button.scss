@@ -11,3 +11,13 @@
     @include border-radius(10px);
     cursor: pointer;
   }
+  .book-payment-button{
+    background-color: $color-details;
+    font-weight: 700;
+    color: $color-black;
+    padding: $spacing-s $spacing-l $spacing-s $spacing-l;
+    margin-top: $spacing-m;
+    font-size: $font-size-m;
+    @include border-radius(30px);
+    cursor: pointer;
+  }

@@ -25,6 +25,7 @@ export const CreateHomeForm = () => {
   const [description, setDescription] = useState<string>("");
   const [price, setPrice] = useState<string>("");
   const [rating, setRating] = useState<string>("");
+  const [capacity, setCapacity] = useState<number>(1);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -35,7 +36,7 @@ export const CreateHomeForm = () => {
     if (imageFile) {
       const imageURL = await uploadImage(imageFile);
       if (imageURL) {
-        await createHome(title, description, price, rating, imageURL, location, equipment);
+        await createHome(title, description, price, rating, imageURL, location, equipment, capacity);
         setMessage("Home created successfully");
       } else {
         console.error("Failed to upload image");
@@ -54,6 +55,7 @@ export const CreateHomeForm = () => {
       <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
       <input type="number" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} required />
       <input type="number" placeholder="Rating" value={rating} onChange={(e) => setRating(e.target.value)} required />
+      <input type="number" placeholder="Capacity" value={capacity} onChange={(e) => setCapacity(parseInt(e.target.value))} required />
       <input type="file" onChange={(e) => {
         if (e.target.files && e.target.files.length > 0) {
           setImageFile(e.target.files[0]);

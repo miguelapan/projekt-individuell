@@ -1,8 +1,13 @@
 
+$color-black: #000000;
 $color-primary: #463844;
 $color-secondary: #ffffff;
 $color-details: #2CAF35;
 $color-gray: #777272;
+$color-card: #463838;
+$color-card-active: #322e2e;
+$color-card-hover: #412727;
+$color-card-chosen: #c5a1a1;
 
 $border-radius-s: 5px;
 $border-radius-m: 10px;
@@ -15,6 +20,12 @@ $spacing-m: 20px;
 $spacing-l: 30px;
 $spacing-xl: 40px;
 $spacing-xxl: 9rem;
+
+$font-size-xs: 0.8rem;
+$font-size-s: 1rem;
+$font-size-m: 1.5rem;
+$font-size-l: 2rem;
+$font-size-xl: 3rem;
 
 $z-index-top: 100;
 $z-index-middle: 10;

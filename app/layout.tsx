@@ -5,16 +5,16 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { AuthProvider } from "./context/contextProvider";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 const inter = localFont({
   src: "./fonts/Inter-Italic-VariableFont_opsz,wght.ttf",
   variable: "--font-inter",
@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`grid-template ${geistSans.variable} ${geistMono.variable} ${inter.variable}`}>
+      <body className={`grid-template  ${inter.variable}`}>
         <AuthProvider>
         <Header />
         <main>

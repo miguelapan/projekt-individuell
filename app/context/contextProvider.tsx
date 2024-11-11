@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Handle Authentication state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -77,13 +76,13 @@ const fetchHomeById = async (id: string): Promise<Homes | null> => {
     }
   };
 
-  // Logout method
+  // Logout
   const logout = async () => {
     await logoutUser();
     setUser(null);
   };
 
-  // Create profile method
+  // Create profile
   const createProfile = async (email: string, password: string, userName: string) => {
     try {
       const newUserProfile = await createUserProfile(email, password, userName);

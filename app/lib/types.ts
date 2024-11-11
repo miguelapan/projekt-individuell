@@ -1,3 +1,5 @@
+import { Timestamp } from 'firebase/firestore';
+
 // User type
 export type User = {
     id?: string;
@@ -22,7 +24,6 @@ export type Equipment = {
     wardrobe: boolean;
 }
 
-
 export type Homes = {
     id?: string;
     title: string;
@@ -33,6 +34,7 @@ export type Homes = {
     price: number;
     equipment: Equipment;
     bookings?: Booking[];
+    capacity: number;
 }
 
 // Booking type to manage reservations
@@ -40,39 +42,6 @@ export type Booking = {
     bookingId?: string;
     homeId: string;
     userId: string;
-    startDate: Date; 
-    endDate: Date;
+    startDate: Timestamp; 
+    endDate: Timestamp;
 }
-
-
-// export type User = {
-//     id?: string;
-//     userName: string;
-//     email?: string;
-//     displayName?: string;
-//     password?: string;
-// }
-
-// export type Equipment = {
-//     doubleBed: boolean,
-//     bathroom: boolean,
-//     curtains: boolean,
-//     wifi: boolean,
-//     mirrors: boolean,
-//     hairdryer: boolean,
-//     iron: boolean,
-//     noSmoking: boolean,
-//     tv: boolean,
-//     wardrobe: boolean,
-// }
-
-// export type Homes = {
-//     id?: string;
-//     title: string;
-//     rating: number;
-//     description: string;
-//     images: string[];
-//     price: number;
-//     isBooked: boolean;
-//     equipment: Equipment;
-// }

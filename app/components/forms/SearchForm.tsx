@@ -1,43 +1,25 @@
-// export const SearchForm = () => {
-//     return (
-//         <form className="search-form">
-//             <h3>Hitta boenden på cool</h3>
-//             <p>Upptäck hela boenden eller hyr in dig på ett rum</p>
-//             <div className="input-search">
-//             <label htmlFor="plats">PLATS</label>
-//             <input type="text" placeholder="Vart som helst" id="plats" />
-//             </div>
-//             <div className="input-search">
-//             <label htmlFor="datum">Välj datum</label>
-//             <input id="datum" type="text" placeholder="DATUM" />
-//             </div>
-//             <div className="input-search">
-//             <label htmlFor="antal">ANTAL BOENDE</label>
-//             <input id="antal" type="text" placeholder="ANTAL BOENDE" />
-//             </div>
-//             <button className="search-button" type="submit">SÖK</button>
-//         </form>
-//     );
-// }
-
 import { FormEvent } from "react";
 
 interface SearchFormProps {
     location: string;
-    date: string;
-    guests: string;
+    guests: number;
+    startDate: string;
+    endDate: string;
     onLocationChange: (value: string) => void;
-    onDateChange: (value: string) => void;
-    onGuestsChange: (value: string) => void;
+    onStartDateChange: (value: string) => void;
+    onEndDateChange: (value: string) => void;
+    onGuestsChange: (value: number) => void;
     onSearch: () => void;
 }
 
 export const SearchForm = ({
     location,
-    date,
+    startDate,
+    endDate,
     guests,
     onLocationChange,
-    onDateChange,
+    onStartDateChange,
+    onEndDateChange,
     onGuestsChange,
     onSearch
 }: SearchFormProps) => {
@@ -59,16 +41,26 @@ export const SearchForm = ({
                     onChange={(e) => onLocationChange(e.target.value)}
                 />
             </div>
+            
             <div className="input-search">
-                <label htmlFor="datum">Välj datum</label>
+                <label htmlFor="startDatum">Välj startdatum</label>
                 <input
-                    type="text"
-                    placeholder="DATUM"
-                    id="datum"
-                    value={date}
-                    onChange={(e) => onDateChange(e.target.value)}
+                    type="date"  
+                    id="startDatum"
+                    value={startDate}
+                    onChange={(e) => onStartDateChange(e.target.value)}
                 />
             </div>
+            <div className="input-search">
+                <label htmlFor="endDatum">Välj slutdatum</label>
+                <input
+                    type="date"
+                    id="endDatum"
+                    value={endDate}
+                    onChange={(e) => onEndDateChange(e.target.value)}
+                />
+            </div>
+
             <div className="input-search">
                 <label htmlFor="antal">ANTAL BOENDE</label>
                 <input
@@ -76,7 +68,7 @@ export const SearchForm = ({
                     placeholder="ANTAL BOENDE"
                     id="antal"
                     value={guests}
-                    onChange={(e) => onGuestsChange(e.target.value)}
+                    onChange={(e) => onGuestsChange(Number(e.target.value))}
                 />
             </div>
             <button className="search-button" type="submit">SÖK</button>

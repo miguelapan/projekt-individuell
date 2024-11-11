@@ -1,5 +1,5 @@
 import { db } from "@/firebase/config";
-import { addDoc, collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { addDoc, arrayUnion, collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
 import { Equipment, Homes } from "./types";
 
 
@@ -35,7 +35,8 @@ export const createHome = async (
   rating: string, 
   imageURL: string, 
   location: string,
-  equipment: Equipment
+  equipment: Equipment,
+  capacity: number
 ): Promise<Homes | null> => {
 
   const homeData: Homes = { 
@@ -45,7 +46,8 @@ export const createHome = async (
     rating: parseFloat(rating),
     images: [imageURL],  // FIXA BARA E NBLD JUST NU
     location, 
-    equipment
+    equipment,
+    capacity,
   };
 
   try {
@@ -55,4 +57,45 @@ export const createHome = async (
     console.error("Error creating home:", error);
     return null;
   }
+};
+
+
+// BOKNING TEST 
+
+
+import { Booking } from "./types";
+
+/**
+ * Adds a new booking to a home and user in Firestore
+//  * KOLLA DETTA 
+//  * KOLLA DETTA 
+//  * KOLLA DETTA 
+//  * KOLLA DETTA 
+//  * KOLLA DETTA 
+//  * KOLLA DETTA 
+//  * KOLLA DETTA 
+//  * KOLLA DETTA 
+//  * KOLLA DETTA 
+ * @param booking - Booking details to add
+ * @returns Promise<void>
+ */
+export const addBooking = async (booking: Booking): Promise<void> => {
+    const homeRef = doc(db, "homes", booking.homeId);
+    const userRef = doc(db, "users", booking.userId);
+
+    try {
+        // Update the home document to add the new booking
+        await updateDoc(homeRef, {
+            bookings: arrayUnion(booking),
+        });
+
+        // Optionally, update the user document to add the booking reference
+        await updateDoc(userRef, {
+            bookings: arrayUnion(booking),
+        });
+
+        console.log("Booking successfully added");
+    } catch (error) {
+        console.error("Error adding booking:", error);
+    }
 };

@@ -1,0 +1,36 @@
+.booking-page{
+    display: grid;
+    grid-column: 1/-1;
+    place-content: center;
+    color: $color-secondary;
+    div{
+        width: 33vw;
+        display: grid;
+        button{
+            justify-self: center;
+        }
+    }
+}
+.payment-card{
+    display: grid;
+    background-color: $color-card;
+    grid-template-columns: 1fr 60%;
+    padding: $spacing-m;
+    margin-top: $spacing-m;
+    border: 1px solid $color-secondary;
+    border-radius: $border-radius-m;
+    cursor: pointer;
+    &:hover{
+        background-color: $color-card-hover;
+    }
+    &:active{
+        background-color: $color-card-active;
+    }
+    img{
+        place-self: end;
+        margin-right: $spacing-l;
+    }
+}
+.selected{
+    background-color: $color-card-chosen;
+}
