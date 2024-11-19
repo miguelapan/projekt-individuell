@@ -49,15 +49,7 @@ export default function DetailPageDesktop({
         <div className="detail-page">
             <div className="detail-container">
                 <h2 className="detail-title">{home.title}</h2>
-                {/* <div className="detail-card-image">
-                    <img className="detail-image" src={home.images[0]} alt="hero" />
-                    <BookingDetails
-                        home={home}
-                        startDate={startDate}
-                        endDate={endDate}
-                        onBookingClick={handleBookingClick}
-                    />
-                </div> */}
+                
                 <div className="detail-card-image">
     {home.images.map((image, index) => (
         <img key={index} className="detail-image" src={image} alt={`Image ${index + 1}`} />
