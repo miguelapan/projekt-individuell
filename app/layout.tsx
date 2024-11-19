@@ -5,20 +5,10 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { AuthProvider } from "./context/contextProvider";
 
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
 const inter = localFont({
-  src: "./fonts/Inter-Italic-VariableFont_opsz,wght.ttf",
+  src: "./fonts/Inter-VariableFont_opsz,wght.ttf",  
   variable: "--font-inter",
-  weight: "100 900",
+  weight: "100 900",  
 });
 
 export const metadata: Metadata = {

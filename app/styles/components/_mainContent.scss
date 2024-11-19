@@ -11,5 +11,11 @@ main {
       object-fit: cover;
       padding: $spacing-xs;
     }
+    @media screen and (max-width: 768px) {
+      .image-main {
+        display: none;
+      }
+      
+    }
   }
   

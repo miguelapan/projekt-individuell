@@ -1,8 +1,12 @@
 .search-form {
+    position: fixed;
+    top: 10rem;
     background-color: $color-secondary;
     color: $color-primary;
     border-radius: $border-radius-m;
     margin: 0 $spacing-m 0 $spacing-m;
+    z-index: $z-index-top;
+    padding: $spacing-m;
   
     div {
       display: flex;
@@ -18,11 +22,13 @@
       }
     }
   
-    @media screen and (min-width: 768px) {
-      display: grid;
-      place-self: center;
-      padding: $spacing-m;
-      gap: var(--spacing-xs);
+   @media screen and (min-width: 768px) {
+     display: grid;
+     top: 0;
+     position: relative;
+     place-self: center;
+     padding: $spacing-m;
+    gap: var(--spacing-xs);
     }
   }
   

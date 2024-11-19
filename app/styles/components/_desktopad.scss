@@ -1,0 +1,18 @@
+.desktop-ad-container {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: $spacing-l;
+    gap: $spacing-l;
+    .desktop-ad-card{
+      background-color: $color-card;
+      padding: $spacing-m;
+      p:nth-child(3){
+        font-weight: $font-weight-light;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
+        
+    }
+  }

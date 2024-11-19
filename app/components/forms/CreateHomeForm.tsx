@@ -1,9 +1,9 @@
-'use client'
 
+'use client'
 import { useState } from "react";
 import { uploadImage } from "@/app/lib/imageUtils";
 import { createHome } from "@/app/lib/homeUtils";
-import { Equipment, Homes } from "@/app/lib/types";
+import { Equipment } from "@/app/lib/types";
 
 export const CreateHomeForm = () => {
   const defaultEquipment: Equipment = {
@@ -18,7 +18,7 @@ export const CreateHomeForm = () => {
     tv: false,
     wardrobe: false,
   };
-  
+
   const [location, setLocation] = useState<string>("");
   const [equipment, setEquipment] = useState<Equipment>(defaultEquipment);
   const [title, setTitle] = useState<string>("");
@@ -26,25 +26,38 @@ export const CreateHomeForm = () => {
   const [price, setPrice] = useState<string>("");
   const [rating, setRating] = useState<string>("");
   const [capacity, setCapacity] = useState<number>(1);
-  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageFiles, setImageFiles] = useState<File[]>([]); // Array of files
   const [message, setMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-   
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    
-    if (imageFile) {
-      const imageURL = await uploadImage(imageFile);
-      if (imageURL) {
-        await createHome(title, description, price, rating, imageURL, location, equipment, capacity);
+
+    if (imageFiles.length > 0) {
+      try {
+        // Upload each image and collect URLs
+        const imageUploadPromises = imageFiles.map((file) => uploadImage(file));
+        const imageURLs = (await Promise.all(imageUploadPromises)).filter((url): url is string => url !== null);
+
+        // Call createHome with multiple image URLs
+        await createHome(
+          title,
+          description,
+          price,
+          rating,
+          imageURLs, // Pass multiple image URLs
+          location,
+          equipment,
+          capacity
+        );
         setMessage("Home created successfully");
-      } else {
-        console.error("Failed to upload image");
-        setErrorMessage("Failed to upload image");
+      } catch (error) {
+        console.error("Failed to upload images:", error);
+        setErrorMessage("Failed to upload images");
       }
     } else {
-      console.error("No image file selected");
-      setErrorMessage("No image file selected");
+      console.error("No image files selected");
+      setErrorMessage("No image files selected");
     }
   };
 
@@ -56,21 +69,28 @@ export const CreateHomeForm = () => {
       <input type="number" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} required />
       <input type="number" placeholder="Rating" value={rating} onChange={(e) => setRating(e.target.value)} required />
       <input type="number" placeholder="Capacity" value={capacity} onChange={(e) => setCapacity(parseInt(e.target.value))} required />
-      <input type="file" onChange={(e) => {
-        if (e.target.files && e.target.files.length > 0) {
-          setImageFile(e.target.files[0]);
-        }
-      }} required />
+      <input
+        type="file"
+        multiple // Allow multiple file selection
+        onChange={(e) => {
+          if (e.target.files && e.target.files.length > 0) {
+            setImageFiles(Array.from(e.target.files)); // Convert FileList to an array
+          }
+        }}
+        required
+      />
       <h2>Equipment</h2>
-
-      {/* KOLLA IN  */}
       <ul>
         {Object.entries(equipment).map(([key, value]) => (
           <li key={key}>
             <label>
-              <input type="checkbox" checked={value} onChange={(e) => {
-                setEquipment((prev) => ({ ...prev, [key]: e.target.checked }));
-              }} />
+              <input
+                type="checkbox"
+                checked={value}
+                onChange={(e) => {
+                  setEquipment((prev) => ({ ...prev, [key]: e.target.checked }));
+                }}
+              />
               {key}
             </label>
           </li>
@@ -82,3 +102,5 @@ export const CreateHomeForm = () => {
     </form>
   );
 };
+
+

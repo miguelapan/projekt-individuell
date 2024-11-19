@@ -7,6 +7,10 @@ footer {
     div {
       display: flex;
       gap: $spacing-s;
+      > * {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-light;
+      }
     }
   
     &::before {

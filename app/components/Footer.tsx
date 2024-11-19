@@ -7,9 +7,9 @@ export const Footer = () => {
             <p>Villkor</p>
             </div>
             <div>
-                <p>some</p>
-                <p>some</p>
-                <p>some</p>
+                <img src="/svg/facebook.svg" alt="some" />
+                <img src="/svg/instagram.svg" alt="some" />
+                <img src="/svg/twitter.svg" alt="some" />
             </div>
         </footer>
     )

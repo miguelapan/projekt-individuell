@@ -33,7 +33,8 @@ export const createHome = async (
   description: string, 
   price: string, 
   rating: string, 
-  imageURL: string, 
+  // imageURL: string, 
+  imageURLs: string[], 
   location: string,
   equipment: Equipment,
   capacity: number
@@ -44,7 +45,8 @@ export const createHome = async (
     description, 
     price: parseFloat(price), 
     rating: parseFloat(rating),
-    images: [imageURL],  // FIXA BARA E NBLD JUST NU
+    // images: [imageURL],  // FIXA BARA E NBLD JUST NU
+    images: imageURLs,  // FIXA BARA E NBLD JUST NU
     location, 
     equipment,
     capacity,

@@ -1,9 +1,17 @@
 .success-page{
+    display: grid;
+    grid-column: 1/-1;
+    grid-template-columns: 1fr;
+    text-align: center;
     img{
-    width: 100%;    
+    width: 100%;   
+    overflow: hidden; 
+    max-height: 40vh;
+    object-fit: cover;
     }
     h1{
         font-size: $font-size-m;
+        
     }
     p{
         font-size: $font-size-m;

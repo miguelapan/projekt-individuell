@@ -9,6 +9,11 @@ $color-card-active: #322e2e;
 $color-card-hover: #412727;
 $color-card-chosen: #c5a1a1;
 
+$color-navbar-mobile: #272828;
+$color-bg-mobile: #121212;
+
+$gradient-header-mobile: linear-gradient(300deg, $color-bg-mobile 0%, #57B65F 200%);
+
 $border-radius-s: 5px;
 $border-radius-m: 10px;
 $border-radius-l: 15px;
@@ -26,6 +31,12 @@ $font-size-s: 1rem;
 $font-size-m: 1.5rem;
 $font-size-l: 2rem;
 $font-size-xl: 3rem;
+
+$font-weight-light: 200;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
 
 $z-index-top: 100;
 $z-index-middle: 10;

@@ -2,7 +2,9 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-  
+    z-index: $z-index-top;
+    background-color: $color-navbar-mobile;
+
     ul {
       display: flex;
       justify-content: space-between;
@@ -10,4 +12,6 @@
       padding: $spacing-m;
     }
   }
-  
+  .navbar-mobile > * {
+    z-index: $z-index-top;
+  }

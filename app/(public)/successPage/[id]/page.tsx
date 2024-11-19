@@ -28,6 +28,7 @@ export default function SuccessPage() {
         }, 5000);
 
         return () => clearTimeout(timeout); 
+        
     }, [params.id, fetchHomeById, router]);
 
     return (

@@ -10,6 +10,8 @@ interface AuthContextType {
   homeData: Homes[];
   user: User | null;
   loading: boolean;
+  modalOpen: boolean;
+  toggleModal: () => void;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   createProfile: (email: string, password: string, userName: string) => Promise<void>;
@@ -22,6 +24,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [homeData, setHomeData] = useState<Homes[]>([]);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const toggleModal = () => setModalOpen((prev) => !prev);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -94,7 +99,7 @@ const fetchHomeById = async (id: string): Promise<Homes | null> => {
   };
 
   return (
-    <AuthContext.Provider value={{ homeData, user, loading, login, logout, createProfile, fetchHomeById }}>
+    <AuthContext.Provider value={{ homeData, user, loading, login, logout, createProfile, fetchHomeById, modalOpen, toggleModal }}>
       {children}
     </AuthContext.Provider>
   );

@@ -7,7 +7,7 @@
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     place-items: center;
-    z-index: 100;
+    z-index: $z-index-top;
   
     .login-form {
       display: grid;
@@ -15,8 +15,8 @@
       background-color: $color-secondary;
       color: $color-primary;
       padding: $spacing-m;
-      min-width: 50%;
-      height: 70%;
+      min-width: 80%;
+      height: 90%;
   
       div {
         position: relative;
@@ -34,5 +34,14 @@
         }
       }
     }
+  }
+  @media screen and (min-width: 768px) {
+    .login-modal {
+      .login-form {
+        min-width: 50%;
+        height: 70%;
+      }
+    }
+    
   }
   

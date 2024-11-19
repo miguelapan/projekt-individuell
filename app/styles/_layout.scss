@@ -2,12 +2,17 @@
     display: grid;
     height: 100vh;
     grid-template-columns: 1fr;
-    grid-template-rows: fit-content(100px) 1fr auto;
-    background-color: $color-primary;
+    grid-template-rows: fit-content(100px) 1fr auto;  
+    background-color: $color-bg-mobile;
+    color: $color-secondary;
+  }
+  .grid-template > * {
+    color: $color-secondary;
   }
   
   header {
     display: flex;
+    justify-content: center;
     position: relative;
   }
   
@@ -20,6 +25,7 @@
       grid-template-columns: repeat(7, 1fr);
       grid-template-rows: fit-content(100px) 1fr auto auto;
       max-height: 100vh;
+      background-color: $color-primary;
     }
   
     header {
